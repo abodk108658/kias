@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tulip Royal Experience</title>
+    <title>Tulip Premium Experience</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
@@ -21,11 +21,30 @@
             overflow-x: hidden;
         }
 
+        /* --- تأثير سقوط بتلات الورد --- */
+        .petal {
+            position: fixed;
+            top: -10%;
+            z-index: 999;
+            user-select: none;
+            pointer-events: none;
+            color: var(--royal-pink);
+            opacity: 0.6;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) rotate(360deg);
+            }
+        }
+
         .app-container {
             max-width: 420px;
             margin: 0 auto;
             min-height: 100vh;
             position: relative;
+            z-index: 2;
         }
 
         .page {
@@ -45,15 +64,29 @@
 
         /* لوجو متحرك */
         .main-logo {
-            font-size: 3rem;
+            font-size: 3.5rem;
             color: var(--royal-pink);
             margin-bottom: 10px;
             animation: float 3s ease-in-out infinite;
+            filter: drop-shadow(0 10px 15px rgba(188, 46, 114, 0.3));
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            0%, 100% { transform: translateY(0) rotate(0); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+        }
+
+        /* تاريخ الإنشاء الفاخر */
+        .creation-date {
+            font-size: 11px;
+            color: var(--gold-touch);
+            border: 1px solid var(--gold-touch);
+            padding: 4px 15px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            font-weight: bold;
+            background: rgba(212, 175, 55, 0.05);
         }
 
         /* تصميم الكارد الملكي */
@@ -61,10 +94,11 @@
             width: 100%;
             border-radius: 45px;
             overflow: hidden;
-            box-shadow: 0 30px 60px rgba(188, 46, 114, 0.15);
+            box-shadow: 0 30px 60px rgba(188, 46, 114, 0.2);
             border: 6px solid var(--white);
             margin: 20px 0;
             position: relative;
+            transform: rotate(-1deg);
         }
 
         .image-card img {
@@ -76,11 +110,10 @@
 
         .image-card:hover img { transform: scale(1.1); }
 
-        /* تزيين العناوين */
         h1 {
             font-size: 34px;
             font-weight: 900;
-            background: linear-gradient(45deg, #bc2e72, #ff85a1);
+            background: linear-gradient(45deg, #bc2e72, #ff85a1, #d4af37);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin: 10px 0;
@@ -96,11 +129,11 @@
 
         /* صندوق الوصف الزجاجي */
         .glass-description {
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(15px);
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(20px);
             padding: 30px;
             border-radius: 35px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.03);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
             border: 1px solid rgba(255,255,255,0.4);
             line-height: 2.1;
             font-size: 17px;
@@ -110,7 +143,7 @@
 
         /* أزرار فخمة */
         .luxury-btn {
-            background: var(--royal-pink);
+            background: linear-gradient(45deg, var(--royal-pink), #ff6b6b);
             color: white;
             border: none;
             padding: 18px 45px;
@@ -118,7 +151,7 @@
             font-size: 19px;
             font-weight: bold;
             cursor: pointer;
-            box-shadow: 0 15px 35px rgba(188, 46, 114, 0.3);
+            box-shadow: 0 15px 35px rgba(188, 46, 114, 0.4);
             transition: 0.4s;
             margin-top: 25px;
             display: flex;
@@ -127,28 +160,16 @@
         }
 
         .luxury-btn:hover {
-            transform: translateY(-7px) scale(1.03);
-            box-shadow: 0 20px 45px rgba(188, 46, 114, 0.4);
-        }
-
-        /* زخرفة الخلفية */
-        .bg-icon {
-            position: fixed;
-            font-size: 200px;
-            color: rgba(188, 46, 114, 0.04);
-            z-index: -1;
-            bottom: -50px;
-            left: -50px;
-            transform: rotate(20deg);
+            transform: translateY(-7px);
+            box-shadow: 0 20px 45px rgba(188, 46, 114, 0.5);
         }
     </style>
 </head>
 <body>
 
     <div class="app-container">
-        <i class="fa-solid fa-fan bg-icon"></i>
-
         <div id="page1" class="page active">
+            <div class="creation-date">EST. DECEMBER 2025</div>
             <i class="fa-solid fa-wand-magic-sparkles main-logo"></i>
             <span class="tagline">The Art of Beauty</span>
             <h1>ورد التوليب</h1>
@@ -161,27 +182,48 @@
         </div>
 
         <div id="page2" class="page">
+            <div class="creation-date">EST. DECEMBER 2025</div>
             <i class="fa-solid fa-gem main-logo" style="color: #d4af37;"></i>
             <span class="tagline">Nature's Masterpiece</span>
             <h1>جمال التوليب</h1>
-            <div class="image-card" style="height: 320px;">
+            <div class="image-card" style="height: 320px; transform: rotate(1deg);">
                 <img src="https://i.postimg.cc/T3RDqYRL/image.png" style="height: 320px;">
             </div>
             <div class="glass-description">
                 ورد التوليب زهرة تتميز بشكلها البسيط والأنيق، وتعد من أكثر الزهور شهرة في العالم. تنمو في المناطق الباردة والمعتدلة، وتعرف بتلاتها الناعمة وألوانها المتعددة مثل الأحمر والوردي والأصفر والأبيض والبنفسجي. يرمز ورد التوليب إلى الرقة والجمال والبدايات الجديدة، كما يعبر عن الهدوء والمشاعر الصادقة. يستخدم التوليب كثيرًا في تنسيق الباقات والهدايا والديكور بسبب مظهره الراقي وسهولة تنسيقه مع الزهور الأخرى، مما يجعله خيارًا مفضلًا في المناسبات المختلفة.
             </div>
-            <button class="luxury-btn" onclick="goToPage(1)" style="background: #444;">
+            <button class="luxury-btn" onclick="goToPage(1)" style="background: #444; box-shadow: 0 15px 35px rgba(0,0,0,0.2);">
                 <i class="fa-solid fa-rotate-right"></i> العودة
             </button>
         </div>
     </div>
 
     <script>
+        // دالة التنقل بين الصفحات
         function goToPage(n) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById('page' + n).classList.add('active');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+
+        // دالة إنشاء بتلات الورد المتساقطة
+        function createPetal() {
+            const petal = document.createElement('i');
+            petal.classList.add('fa-solid', 'fa-leaf', 'petal'); // استخدمنا أيقونة ورقة شجر لتمثيل البتلة
+            petal.style.left = Math.random() * 100 + 'vw';
+            petal.style.animationDuration = Math.random() * 3 + 2 + 's';
+            petal.style.fontSize = Math.random() * 20 + 10 + 'px';
+            petal.style.opacity = Math.random();
+            
+            document.body.appendChild(petal);
+
+            setTimeout(() => {
+                petal.remove();
+            }, 5000);
+        }
+
+        // تشغيل تأثير البتلات كل 300 مللي ثانية
+        setInterval(createPetal, 300);
     </script>
 </body>
 </html>
